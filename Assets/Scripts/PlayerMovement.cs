@@ -19,6 +19,9 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isJumping; 
 
+    public CrystalManager cm;
+
+
     // Update is called once per frame
     void Update()
     {
@@ -66,6 +69,14 @@ public class PlayerMovement : MonoBehaviour
         if(other.gameObject.CompareTag("Ground"))
         {
             isJumping = true;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Interactible"))
+        {
+            cm.crystalCount++; 
         }
     }
 }
